@@ -17,7 +17,6 @@ public class Desafio1Application implements CommandLineRunner {
     private AutomovilRepository automovilRepository;
     @Override
     public void run(String... args) throws Exception {
-        automovilRepository.generarAutomoviles(30);
-
+       // automovilRepository.generarAutomoviles(30);
     }
 }

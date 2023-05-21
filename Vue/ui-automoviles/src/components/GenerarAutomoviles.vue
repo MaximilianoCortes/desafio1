@@ -1,33 +1,36 @@
-<!-- <template>
+<template>
   <div>
-    <h2>Generar Automóviles</h2>
-    <label>Cantidad:</label>
-    <input type="number" v-model="cantidad" min="1" />
-    <button @click="generarAutomoviles">Generar</button>
-  </div>
+      <form @submit.prevent="submitForm">
+        <input type="number" v-model="cantidad" placeholder="Escribe la cantidad">
+        <button type="submit">Generar</button>
+      </form>
+    </div>
 </template>
-
 <script>
+//import { reactive } from 'vue';
 import axios from 'axios';
-
+  
 export default {
-  data() {
-    return {
-      automoviles: [],
+  data(){
+    return{
+      cantidad: 0,
+      automovil: null,
     };
   },
-  methods: {
-    generarAutomoviles() {
-      const cantidad = 10; // Cantidad de automóviles a generar
-
-      axios.post('/automoviles/generar', { cantidad })
+  methods:{
+    generate(){
+      axios.get(`http://localhost:8080/api/generar?cantidad=${this.cantidad}`)
         .then(response => {
-          this.automoviles = response.data;
+          this.automovil = response.data;
         })
         .catch(error => {
           console.error(error);
         });
     },
-  },
-};
-</script> -->
+    submitForm(){
+      this.generate();
+    }
+  }
+}
+</script>
+

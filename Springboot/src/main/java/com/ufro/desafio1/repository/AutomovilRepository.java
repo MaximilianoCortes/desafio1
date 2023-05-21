@@ -15,7 +15,7 @@ public class AutomovilRepository {
     public List<Automovil> obtenerAutomoviles() {
         return listaAutomoviles;
     }
-    public void generarAutomoviles(int cantidad) {
+    public List<Automovil> generarAutomoviles(int cantidad) {
         for (int i = 0; i < cantidad; i++) {
             Automovil automovil = new Automovil();
             automovil.setId(generarIdUnico());
@@ -31,6 +31,7 @@ public class AutomovilRepository {
             automovil.setPopularidad(0);
             listaAutomoviles.add(automovil);
         }
+        return listaAutomoviles;
     }
 
     public Automovil findById(int id){

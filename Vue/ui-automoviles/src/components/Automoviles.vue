@@ -19,7 +19,7 @@
             <tr v-for = "automovil in automoviles" v-bind:key = "automovil.id">
                 <td>{{ automovil.id }}</td>
                 <td>{{ automovil.marca }}</td>
-                <td>{{ automovil.año }}</td>
+                <td>{{ automovil.ano }}</td>
                 <td>{{ automovil.color }}</td>
                 <td>{{ automovil.precio }}</td>
                 <td>{{ automovil.turbo }}</td>
