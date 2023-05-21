@@ -11,6 +11,9 @@ import java.util.Random;
 public class AutoService {
     private List<Automovil> automoviles = new ArrayList<>();
 
+    public List<Automovil> obtenerAutomoviles() {
+        return automoviles;
+    }
     public List<Automovil> generarAutomoviles(int cantidad) {
         for (int i = 0; i < cantidad; i++) {
             Automovil automovil = new Automovil();
@@ -38,7 +41,7 @@ public class AutoService {
     private String generarMarcaAleatoria() {
         // Lógica para generar una marca aleatoria
         String[] marcas = {"Subaru","Toyota","Kia","Mitsubishi","Honda","BMW","Mazda","Ford"};
-        return "Marca Aleatoria";
+        return marcas[new Random().nextInt(marcas.length)];
     }
 
     private int generarAñoAleatorio() {
@@ -48,7 +51,8 @@ public class AutoService {
 
     private String generarColorAleatorio() {
         // Lógica para generar un color aleatorio
-        return "Color Aleatorio";
+        String[] color = {"Rojo","Azul","Blanco","Gris","Crema","Negro","Morado","Verde"};
+        return color[new Random().nextInt(color.length)];
     }
 
     private double generarPrecioAleatorio() {
