@@ -1,20 +1,20 @@
-package com.ufro.desafio1.services;
+package com.ufro.desafio1.repository;
 
 import com.ufro.desafio1.models.Automovil;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@Service
-public class AutoService {
-    private List<Automovil> automoviles = new ArrayList<>();
+@Repository
+public class AutomovilRepository {
+    private List<Automovil> listaAutomoviles = new ArrayList<>();
 
     public List<Automovil> obtenerAutomoviles() {
-        return automoviles;
+        return listaAutomoviles;
     }
-    public List<Automovil> generarAutomoviles(int cantidad) {
+    public void generarAutomoviles(int cantidad) {
         for (int i = 0; i < cantidad; i++) {
             Automovil automovil = new Automovil();
             automovil.setId(generarIdUnico());
@@ -28,10 +28,21 @@ public class AutoService {
             automovil.setCabinas(generarCabinasAleatorio(automovil.getTipo()));
             automovil.setSunroof(generarSunroofAleatorio(automovil.getTipo()));
             automovil.setPopularidad(0);
-            automoviles.add(automovil);
+            listaAutomoviles.add(automovil);
         }
-        return automoviles;
     }
+
+    public Automovil findById(int id){
+        for (int i = 0; i < listaAutomoviles.size(); i++) {
+            if (listaAutomoviles.get(i).getId() == (id)) {
+                return listaAutomoviles.get(i);
+            }
+        }
+        return null;
+    }
+
+
+    //abajo es para generarlos
 
     private Long generarIdUnico() {
         // Lógica para generar un ID único
