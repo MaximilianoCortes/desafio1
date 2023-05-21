@@ -1,33 +1,28 @@
 package com.ufro.desafio1.controllers;
 
 import com.ufro.desafio1.models.Automovil;
-import com.ufro.desafio1.services.AutomovilService;
+import com.ufro.desafio1.repository.AutomovilRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin("http://localhost:8081")
 public class AutomovilController {
 
-    private final AutomovilService automovilService;
-
     @Autowired
-    public AutomovilController(AutomovilService automovilService) {
-        this.automovilService = automovilService;
-    }
+    private AutomovilRepository automovilRepository;
 
 
-    @GetMapping("/api")
+    @GetMapping("/automoviles")
     public List<Automovil> obtenerAutomoviles() {
-        return automovilService.getListaAutomovil();
+        return automovilRepository.obtenerAutomoviles();
     }
 
     @PostMapping("/generar")
     public void generarAutomoviles(@RequestParam("cantidad") int cantidad) {
-        automovilService.generarAutomoviles(cantidad);
+        automovilRepository.generarAutomoviles(cantidad);
     }
 }

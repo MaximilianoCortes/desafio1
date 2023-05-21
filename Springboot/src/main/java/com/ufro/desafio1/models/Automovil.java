@@ -1,9 +1,9 @@
 package com.ufro.desafio1.models;
 
 public class Automovil {
-    private Long id;
+    private int id;
     private String marca;
-    private int año;
+    private int ano;
     private String color;
     private double precio;
     private boolean turbo;
@@ -16,10 +16,10 @@ public class Automovil {
     public Automovil() {
     }
 
-    public Automovil(Long id, String marca, int año, String color, double precio, boolean turbo, String tipo, String motor, int cabinas, boolean sunroof, int popularidad) {
+    public Automovil(int id, String marca, int ano, String color, double precio, boolean turbo, String tipo, String motor, int cabinas, boolean sunroof, int popularidad) {
         this.id = id;
         this.marca = marca;
-        this.año = año;
+        this.ano = ano;
         this.color = color;
         this.precio = precio;
         this.turbo = turbo;
@@ -30,11 +30,11 @@ public class Automovil {
         this.popularidad = popularidad;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -46,12 +46,12 @@ public class Automovil {
         this.marca = marca;
     }
 
-    public int getAño() {
-        return año;
+    public int getAno() {
+        return ano;
     }
 
-    public void setAño(int año) {
-        this.año = año;
+    public void setAno(int ano) {
+        this.ano = ano;
     }
 
     public String getColor() {

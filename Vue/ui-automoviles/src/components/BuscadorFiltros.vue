@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>
       <h2>Buscador de Automóviles</h2>
       <div class="filtro">
@@ -50,4 +50,4 @@
   .resultado {
     margin-top: 20px;
   }
-  </style>
+  </style> -->

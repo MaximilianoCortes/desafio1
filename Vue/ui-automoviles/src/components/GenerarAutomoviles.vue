@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <h2>Generar Automóviles</h2>
     <label>Cantidad:</label>
@@ -30,4 +30,4 @@ export default {
     },
   },
 };
-</script>
+</script> -->

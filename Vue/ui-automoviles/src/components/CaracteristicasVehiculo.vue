@@ -1,12 +1,12 @@
-<template>
+<!-- <template>
     <div>
       <h2>Características del Vehículo</h2>
       <div v-if="vehiculo">
         <h3>{{ vehiculo.marca }}</h3>
         <p>Año: {{ vehiculo.anio }}</p>
-        <p>Color: {{ vehiculo.color }}</p>
-        <!-- Agrega las demás características del vehículo según tu modelo de datos -->
-      </div>
+        <p>Color: {{ vehiculo.color }}</p> -->
+        <!--  Agrega las demás características del vehículo según tu modelo de datos -->
+      <!-- </div>
       <button @click="limpiarSeleccion">Limpiar Selección</button>
     </div>
   </template>
@@ -25,4 +25,4 @@
       },
     },
   };
-  </script>
+  </script> -->

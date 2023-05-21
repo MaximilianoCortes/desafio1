@@ -10,6 +10,7 @@ import java.util.Random;
 @Repository
 public class AutomovilRepository {
     private List<Automovil> listaAutomoviles = new ArrayList<>();
+    private int contadorId = 0;
 
     public List<Automovil> obtenerAutomoviles() {
         return listaAutomoviles;
@@ -19,7 +20,7 @@ public class AutomovilRepository {
             Automovil automovil = new Automovil();
             automovil.setId(generarIdUnico());
             automovil.setMarca(generarMarcaAleatoria());
-            automovil.setAño(generarAñoAleatorio());
+            automovil.setAno(generarAnoAleatorio());
             automovil.setColor(generarColorAleatorio());
             automovil.setPrecio(generarPrecioAleatorio());
             automovil.setTurbo(generarTurboAleatorio());
@@ -44,9 +45,9 @@ public class AutomovilRepository {
 
     //abajo es para generarlos
 
-    private Long generarIdUnico() {
+    private int generarIdUnico() {
         // Lógica para generar un ID único
-        return new Random().nextLong();
+        return contadorId++;
     }
 
     private String generarMarcaAleatoria() {
@@ -55,7 +56,7 @@ public class AutomovilRepository {
         return marcas[new Random().nextInt(marcas.length)];
     }
 
-    private int generarAñoAleatorio() {
+    private int generarAnoAleatorio() {
         // Lógica para generar un año aleatorio entre 2015 y 2023
         return new Random().nextInt(9) + 2015;
     }
