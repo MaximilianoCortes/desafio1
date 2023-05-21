@@ -8,22 +8,21 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
   data() {
     return {
-      cantidad: 1,
+      automoviles: [],
     };
   },
   methods: {
     generarAutomoviles() {
-      axios
-        .post(`${process.env.VUE_APP_API_URL}/automoviles/generar`, {
-          cantidad: this.cantidad,
-        })
+      const cantidad = 10; // Cantidad de automóviles a generar
+
+      axios.post('/automoviles/generar', { cantidad })
         .then(response => {
-          console.log(response.data);
+          this.automoviles = response.data;
         })
         .catch(error => {
           console.error(error);

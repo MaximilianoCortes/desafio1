@@ -1,27 +1,53 @@
 <template>
     <div>
-      <h2>Buscador y Filtros</h2>
-      <!-- Agrega los campos de búsqueda y filtros según tus necesidades -->
+      <h2>Buscador de Automóviles</h2>
+      <div class="filtro">
+        <label>Cantidad de automóviles: </label>
+        <input type="number" v-model="cantidadAutomoviles" min="1">
+        <button @click="buscar">Buscar</button>
+      </div>
+      <div class="resultado">
+        <h3>Resultado de la búsqueda:</h3>
+        <ul>
+          <li v-for="automovil in automoviles" :key="automovil.id">
+            <span>{{ automovil.marca }}</span> - <span>{{ automovil.modelo }}</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </template>
   
   <script>
   import axios from "axios";
-  
+
   export default {
-    methods: {
-      buscar() {
-        // Realiza la llamada a la API para buscar automóviles según los filtros seleccionados
-        // Puedes utilizar axios para enviar una solicitud GET al endpoint correspondiente en el backend
-        axios
-          .get(`${process.env.VUE_APP_API_URL}/automoviles`)
-          .then(response => {
-            console.log(response.data);
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      },
+    data() {
+      return {
+        cantidadAutomoviles: 2,
+        automoviles: []
+      };
     },
+    methods: {
+        buscar() {
+    const cantidad = this.cantidadAutomoviles;
+    axios.get(`/automoviles?cantidad=${cantidad}`)
+      .then(response => {
+        this.automoviles = response.data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+    }
   };
   </script>
+  
+  <style scoped>
+  .filtro {
+    margin-bottom: 20px;
+  }
+  
+  .resultado {
+    margin-top: 20px;
+  }
+  </style>
