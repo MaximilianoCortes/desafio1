@@ -1,32 +1,32 @@
 <template>
   <div>
     <h2>Generar Automóviles</h2>
-    <form @submit.prevent="generarAutomoviles">
-      <label>Cantidad:</label>
-      <input type="number" v-model="cantidad" required>
-      <button type="submit">Generar</button>
-    </form>
+    <label>Cantidad:</label>
+    <input type="number" v-model="cantidad" min="1" />
+    <button @click="generarAutomoviles">Generar</button>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
-      cantidad: 0,
-      automovilesGenerados: [], // Variable para almacenar los automóviles generados
+      cantidad: 1,
     };
   },
   methods: {
     generarAutomoviles() {
-      // Realizar la llamada a la API con la cantidad indicada
-      fetch(`http://localhost:8080/automoviles/generar?cantidad=${this.cantidad}`)
-        .then(response => response.json())
-        .then(data => {
-          this.automovilesGenerados = data; // Almacenar los automóviles generados en la variable
+      axios
+        .post(`${process.env.VUE_APP_API_URL}/automoviles/generar`, {
+          cantidad: this.cantidad,
+        })
+        .then(response => {
+          console.log(response.data);
         })
         .catch(error => {
-          console.error('Error al generar los automóviles:', error);
+          console.error(error);
         });
     },
   },
