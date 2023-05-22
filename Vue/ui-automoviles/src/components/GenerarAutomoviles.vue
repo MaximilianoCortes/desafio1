@@ -17,7 +17,7 @@ export default {
     };
   },
   methods:{
-    generate(){
+    generar(){
       axios.get(`http://localhost:8080/api/generar?cantidad=${this.cantidad}`)
         .then(response => {
           this.automovil = response.data;
@@ -28,7 +28,7 @@ export default {
         });
     },
     submitForm(){
-      this.generate();
+      this.generar();
     }
   }
 }

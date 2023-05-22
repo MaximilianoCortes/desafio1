@@ -10,7 +10,27 @@ import java.util.Random;
 @Repository
 public class AutomovilRepository {
     private List<Automovil> listaAutomoviles = new ArrayList<>();
+    private List<Automovil> automovilesFiltrados = new ArrayList<>();
     private int contadorId = 0;
+
+
+    public List<Automovil> filtrarAutomovilesPorPrecio(double precio) {
+        automovilesFiltrados = new ArrayList<>();
+        for (Automovil automovil : listaAutomoviles) {
+            if (automovil.getPrecio() <= precio) {
+                automovilesFiltrados.add(automovil);
+            }
+        }
+        return automovilesFiltrados;
+    }
+
+    public List<Automovil> obtenerAutomovilesFiltrados() {
+        return automovilesFiltrados;
+    }
+    public List<Automovil> limpiarAutomovilesFiltrados() {
+        automovilesFiltrados=new ArrayList<>();
+        return automovilesFiltrados;
+    }
 
     public List<Automovil> obtenerAutomoviles() {
         return listaAutomoviles;
@@ -120,15 +140,8 @@ public class AutomovilRepository {
         }
     }
 
-    public List<Automovil> filtrarAutomovilesPorPrecio(double precio) {
-        List<Automovil> automovilesFiltrados = new ArrayList<>();
-        for (Automovil automovil : listaAutomoviles) {
-            if (automovil.getPrecio() <= precio) {
-                automovilesFiltrados.add(automovil);
-            }
-        }
-        return automovilesFiltrados;
-    }
+    
+
 
 
 

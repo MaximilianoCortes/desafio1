@@ -46,9 +46,15 @@
       };
     },
     mounted() {
+      if(!axios.get('http://localhost:8080/api/filtrados') == []){
+          axios
+        .get('http://localhost:8080/api/filtrados')
+        .then(result => (this.automoviles = result.data));
+        }else{
       axios
         .get('http://localhost:8080/api/automoviles')
         .then(result => (this.automoviles = result.data));
+      }
     },
     methods: {
       mostrarDetalle(automovil) {

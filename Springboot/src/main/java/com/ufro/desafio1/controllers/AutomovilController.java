@@ -29,9 +29,14 @@ public class AutomovilController {
         return automovilRepository.generarAutomoviles(cantidad);
     }
 
-    @GetMapping("/filtrarPrecio")
-    public List<Automovil> filtrarAutomovilesPorPrecio(@RequestParam("precio") double precio) {
+    @RequestMapping("/filtrar")
+    @ResponseBody
+    public List<Automovil> filtrarAutos(@RequestParam("precio") int precio){
         return automovilRepository.filtrarAutomovilesPorPrecio(precio);
+    }
+    @GetMapping("/filtrados")
+    public List<Automovil> filtrarAutomovilesPorPrecio() {
+        return automovilRepository.obtenerAutomovilesFiltrados();
     }
 
 }
