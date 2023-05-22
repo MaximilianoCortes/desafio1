@@ -28,4 +28,10 @@ public class AutomovilController {
     public List<Automovil> listCars(@RequestParam("cantidad") int cantidad){
         return automovilRepository.generarAutomoviles(cantidad);
     }
+
+    @GetMapping("/filtrarPrecio")
+    public List<Automovil> filtrarAutomovilesPorPrecio(@RequestParam("precio") double precio) {
+        return automovilRepository.filtrarAutomovilesPorPrecio(precio);
+    }
+
 }

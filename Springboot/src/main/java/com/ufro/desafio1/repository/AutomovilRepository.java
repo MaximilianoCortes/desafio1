@@ -119,4 +119,17 @@ public class AutomovilRepository {
             return false;
         }
     }
+
+    public List<Automovil> filtrarAutomovilesPorPrecio(double precio) {
+        List<Automovil> automovilesFiltrados = new ArrayList<>();
+        for (Automovil automovil : listaAutomoviles) {
+            if (automovil.getPrecio() <= precio) {
+                automovilesFiltrados.add(automovil);
+            }
+        }
+        return automovilesFiltrados;
+    }
+
+
+
 }
