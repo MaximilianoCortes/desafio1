@@ -1,60 +1,61 @@
 <template>
-<div class = "container">  
-    <h1 class = "text-center">Lista de automoviles</h1>
-    <table class="table table-striped">
+    <div class="container" ref="containerRef">
+              <!-- Componente DetalleAutomovil -->
+      <CaracteristicasVehiculo :automovil="automovilSeleccionado" v-if="mostrarDetalleAutomovil" />
+      <h1 class="text-center">Lista de automóviles</h1>
+      <table class="table table-striped">
+        <!-- Encabezados de la tabla -->
         <thead>
-            <th>Id</th>
-            <th>Marca</th>
-            <th>Año</th>
-            <th>Color</th>
-            <th>Precio</th>
-            <th>Turbo</th>
-            <th>Tipo </th>
-            <th>Motor </th>
-            <th>Cabinas</th>
-            <th>Sunroof</th>
-            <th>Popularidad</th>
+          <th>Id</th>
+          <th>Marca</th>
+          <th>Año</th>
+          <th>Color</th>
+          <th>Precio</th>
         </thead>
+        <!-- Cuerpo de la tabla -->
         <tbody>
-            <tr v-for = "automovil in automoviles" v-bind:key = "automovil.id">
-                <td>{{ automovil.id }}</td>
-                <td>{{ automovil.marca }}</td>
-                <td>{{ automovil.ano }}</td>
-                <td>{{ automovil.color }}</td>
-                <td>{{ automovil.precio }}</td>
-                <td>{{ automovil.turbo }}</td>
-                <td>{{ automovil.tipo }}</td>
-                <td>{{ automovil.motor }}</td>
-                <td>{{ automovil.cabinas }}</td>
-                <td>{{ automovil.sunroof }}</td>
-                <td>{{ automovil.popularidad }}</td>
-
-            </tr>
+          <tr v-for="automovil in automoviles" :key="automovil.id" @click="mostrarDetalle(automovil)">
+            <td>{{ automovil.id }}</td>
+            <td>{{ automovil.marca }}</td>
+            <td>{{ automovil.ano }}</td>
+            <td>{{ automovil.color }}</td>
+            <td>{{ automovil.precio }}</td>
+          </tr>
         </tbody>
-    </table>
-</div>
-</template>
+      </table>
+  
 
-<script>
-// import {getAutomovil} from '../AutomovilService'
-import axios from "axios";
-
-    
-
-export default{
-    name:'ListaAutomoviles',
-    data(){
-        return{
-            automoviles:[]
-        }
-        
+  
+    </div>
+  </template>
+  
+  <script>
+  import CaracteristicasVehiculo from './CaracteristicasVehiculo.vue';
+  import axios from 'axios';
+  
+  export default {
+    name: 'ListaAutomoviles',
+    components: {
+    CaracteristicasVehiculo
+},
+    data() {
+      return {
+        automoviles: [],
+        automovilSeleccionado: null,
+        mostrarDetalleAutomovil: false
+      };
     },
-    mounted(){
-        axios
-            .get("http://localhost:8080/api/automoviles") //aqui poner la direccion nomas de los getmapping de springboot
-            .then(result => (this.automoviles = result.data))
+    mounted() {
+      axios
+        .get('http://localhost:8080/api/automoviles')
+        .then(result => (this.automoviles = result.data));
+    },
+    methods: {
+      mostrarDetalle(automovil) {
+        this.automovilSeleccionado = automovil;
+        this.mostrarDetalleAutomovil = true;
+        this.$refs.containerRef.scrollIntoView({ behavior: 'smooth' });
+      }
     }
-}
-
-
-</script>
+  };
+  </script>
