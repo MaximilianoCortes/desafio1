@@ -21,6 +21,7 @@ export default {
       axios.get(`http://localhost:8080/api/generar?cantidad=${this.cantidad}`)
         .then(response => {
           this.automovil = response.data;
+          window.location.reload(); // Recargar la página
         })
         .catch(error => {
           console.error(error);
