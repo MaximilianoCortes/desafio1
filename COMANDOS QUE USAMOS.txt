@@ -5,3 +5,5 @@ ahi hicimos el respectivo docker build .
 y luego 
 docker run -p 8080:8080 -d imagenspringboot
 docker run -p 8081:8080 -d imagenvue
+
+EN LA PRIMERA EJECUCIÓN DE LA APLICACIÓN HAY QUE "QUITAR FILTRO" PARA CARGAR LOS AUTOS GENERADOS, NO LO PUDIMOS ARREGLAR A TIEMPO.
