@@ -1,0 +1,7 @@
+PARA SPRINGBOOT primero cd springboot
+y para docker vue cd vue/ui-automoviles
+
+ahi hicimos el respectivo docker build .
+y luego 
+docker run -p 8080:8080 -d imagenspringboot
+docker run -p 8081:8080 -d imagenvue
